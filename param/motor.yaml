@@ -1,0 +1,18 @@
+motor_input_topic: low_level/twist_cmd_mux/output
+motor_output_topic: cmd_vel
+
+motor:
+  # turning smoother - limits rotation speed and smooths anything above limit
+  max_turning_speed: 1.2 # radians/second
+
+  # speed smoother - limits acceleration and smooths anything above limit
+  max_acceleration: 2.0 # meters/second^2
+  throttle_smoother_rate: 75.0 # messages/sec
+
+  speed_min: -4.0
+  speed_max: 4.0
+  turning_min: -2.0
+  turning_max: 2.0
+
+  # desired refresh_rate =  refresh_rate * max_acceleration / throttle_smoother_rate = 100hz
+  refresh_rate: 3500

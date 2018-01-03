@@ -148,7 +148,7 @@ void TwistCmdMuxNodelet::reloadConfiguration(twist_cmd_mux::reloadConfig &config
 		*node >> output_name;
 	}
 #endif
-	mux_twist_cmd_pub = nh_priv.advertise <geometry_msgs::TwistDriveStamped> (output_name, 10);
+	mux_twist_cmd_pub = nh_priv.advertise <geometry_msgs::Twist> (output_name, 10);
 
 	/*********************
 	** Input Subscribers
@@ -167,7 +167,7 @@ void TwistCmdMuxNodelet::reloadConfiguration(twist_cmd_mux::reloadConfig &config
 	for (unsigned int i = 0; i < twist_cmd_sub.size(); i++)
 	{
 		twist_cmd_sub[i].subs =
-				nh_priv.subscribe<twist_msgs::TwistDriveStamped>(twist_cmd_sub[i].topic, 10, TwistCmdFunctor(i, this));
+				nh_priv.subscribe<geometry_msgs::Twist>(twist_cmd_sub[i].topic, 10, TwistCmdFunctor(i, this));
 
 		// Create (stopped by now) a one-shot timer for every subscriber
 		twist_cmd_sub[i].timer =

@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!--
-  Ackermann Command Multiplexer launcher
+  Twist Command Multiplexer launcher
   -->
 
 <launch>
   <arg name="nodelet_manager_name"  default="nodelet_manager"/>
   <arg name="config_file"           default="$(find twist_cmd_mux)/param/example.yaml"/>
 
-  <node pkg="nodelet" type="nodelet" name="ackermann_cmd_mux"
+  <node pkg="nodelet" type="nodelet" name="twist_cmd_mux"
         args="load twist_cmd_mux/TwistCmdMuxNodelet $(arg nodelet_manager_name)">
     <param name="yaml_cfg_file" value="$(arg config_file)"/>
   </node>
